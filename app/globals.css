@@ -140,19 +140,67 @@ a {
 
 .download-list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 190px));
+  grid-template-columns: max-content max-content minmax(150px, 174px);
   gap: 10px;
   justify-content: end;
+  align-items: center;
 }
 
-.download-link {
+.store-badge {
+  position: relative;
   display: flex;
-  min-height: 58px;
+  height: 78px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding-bottom: 12px;
+}
+
+.store-badge img {
+  display: block;
+  width: auto;
+}
+
+.store-badge-app-store img {
+  height: 44px;
+}
+
+.store-badge-google-play img {
+  height: 66px;
+}
+
+.store-badge.is-disabled {
+  cursor: default;
+}
+
+.store-badge-status {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: var(--muted-ink);
+  font-size: 0.58rem;
+  font-weight: 570;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.store-badge:focus-visible,
+.apk-download:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.apk-download {
+  display: flex;
+  min-height: 44px;
   flex-direction: column;
   justify-content: center;
   border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 9px 16px 10px;
+  border-radius: 10px;
+  padding: 7px 14px 8px;
   background: var(--surface);
   backdrop-filter: blur(18px) saturate(125%);
   box-shadow: 0 14px 38px rgba(0, 0, 0, 0.12);
@@ -163,19 +211,14 @@ a {
     transform 160ms ease;
 }
 
-a.download-link:hover {
+a.apk-download:hover {
   border-color: var(--surface-hover);
   background: var(--surface-hover);
   color: #17120e;
   transform: translateY(-2px);
 }
 
-a.download-link:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 3px;
-}
-
-.download-link.is-disabled {
+.apk-download.is-disabled {
   color: var(--muted-ink);
   cursor: default;
 }
@@ -219,7 +262,17 @@ a.download-link:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .download-link:last-child {
+  .store-badge,
+  .apk-download {
+    width: 100%;
+  }
+
+  .store-badge img {
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  .apk-download:last-child {
     grid-column: 1 / -1;
     min-height: 52px;
   }
@@ -234,7 +287,7 @@ a.download-link:focus-visible {
     font-size: clamp(3rem, 10vw, 5.6rem);
   }
 
-  .download-link {
+  .apk-download {
     min-height: 50px;
   }
 }
@@ -244,7 +297,7 @@ a.download-link:focus-visible {
     display: none;
   }
 
-  .download-link {
+  .apk-download {
     transition: none;
   }
 }

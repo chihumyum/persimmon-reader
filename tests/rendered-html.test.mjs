@@ -36,6 +36,7 @@ test("renders the complete Persimmon landing page", async () => {
   assert.match(html, /App Store/);
   assert.match(html, /Google Play/);
   assert.match(html, /Android APK/);
+  assert.match(html, /Coming soon/);
   assert.match(html, /page-turn\.mp4/);
   assert.match(html, /autoplay/i);
   assert.match(html, /muted/i);
@@ -52,7 +53,10 @@ test("keeps motion and download fallbacks explicit", async () => {
   ]);
 
   assert.match(page, /process\.env\.NEXT_PUBLIC_APP_STORE_URL/);
+  assert.match(page, /process\.env\.NEXT_PUBLIC_PLAY_STORE_URL/);
   assert.match(page, /process\.env\.NEXT_PUBLIC_APK_URL/);
+  assert.match(page, /badges\/download-on-the-app-store\.svg/);
+  assert.match(page, /badges\/get-it-on-google-play\.png/);
   assert.match(page, /Coming soon/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.match(css, /\.page-turn-video\s*\{[\s\S]*?display:\s*none/);

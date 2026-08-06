@@ -22,8 +22,13 @@ prefer reduced motion, leaving the poster/fallback background in place.
 ## Configure downloads
 
 Copy `.env.example` to `.env.local`, then replace the empty values with the
-release URLs. The Google Play link already falls back to Persimmon's Android
-package ID. Empty App Store or APK values are shown honestly as “Coming soon”.
+release URLs. Official store badges appear only when their matching listing URL
+is configured. Empty values are shown honestly as “Coming soon”.
+
+The English App Store and Google Play badges in `public/badges/` are the
+unaltered official assets from [Apple Developer](https://developer.apple.com/app-store/marketing/guidelines/)
+and [Android Developers](https://developer.android.com/distribute/marketing-tools).
+Do not redraw, recolor, crop, or add effects to the badge artwork.
 
 ## Run locally
 

@@ -1,41 +1,79 @@
 const downloadLinks = {
   appStore: process.env.NEXT_PUBLIC_APP_STORE_URL,
-  playStore:
-    process.env.NEXT_PUBLIC_PLAY_STORE_URL ??
-    "https://play.google.com/store/apps/details?id=dev.chihum.persimmon",
+  playStore: process.env.NEXT_PUBLIC_PLAY_STORE_URL,
   apk: process.env.NEXT_PUBLIC_APK_URL,
 } as const;
 
-type DownloadLinkProps = {
+type StoreBadgeProps = {
   href?: string;
+  image: {
+    alt: string;
+    height: number;
+    src: string;
+    width: number;
+  };
   label: string;
-  prefix: string;
+  store: "app-store" | "google-play";
 };
 
-function DownloadLink({ href, label, prefix }: DownloadLinkProps) {
-  const content = (
-    <>
-      <span className="download-prefix">{href ? prefix : "Coming soon"}</span>
-      <span className="download-label">{label}</span>
-    </>
+function StoreBadge({ href, image, label, store }: StoreBadgeProps) {
+  const artwork = (
+    // Store artwork should be served byte-for-byte rather than optimized.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      alt={image.alt}
+      height={image.height}
+      src={image.src}
+      width={image.width}
+    />
   );
 
   if (!href) {
     return (
-      <span className="download-link is-disabled" aria-disabled="true">
-        {content}
+      <span
+        className={`store-badge store-badge-${store} is-disabled`}
+        aria-disabled="true"
+        aria-label={`${label}, coming soon`}
+      >
+        {artwork}
+        <span className="store-badge-status">Coming soon</span>
       </span>
     );
   }
 
   return (
     <a
-      className="download-link"
+      className={`store-badge store-badge-${store}`}
       href={href}
       rel="noreferrer"
       target="_blank"
-      aria-label={`${prefix} ${label}`}
+      aria-label={image.alt}
     >
+      {artwork}
+    </a>
+  );
+}
+
+function ApkDownload({ href }: { href?: string }) {
+  const content = (
+    <>
+      <span className="download-prefix">
+        {href ? "Direct download" : "Coming soon"}
+      </span>
+      <span className="download-label">Android APK</span>
+    </>
+  );
+
+  if (!href) {
+    return (
+      <span className="apk-download is-disabled" aria-disabled="true">
+        {content}
+      </span>
+    );
+  }
+
+  return (
+    <a className="apk-download" href={href} aria-label="Download Android APK">
       {content}
     </a>
   );
@@ -83,21 +121,29 @@ export default function Home() {
 
       <footer className="download-area" aria-label="Download Persimmon">
         <nav className="download-list" aria-label="Download options">
-          <DownloadLink
+          <StoreBadge
             href={downloadLinks.appStore}
-            prefix="Download on the"
+            image={{
+              alt: "Download on the App Store",
+              height: 40,
+              src: "/badges/download-on-the-app-store.svg",
+              width: 120,
+            }}
             label="App Store"
+            store="app-store"
           />
-          <DownloadLink
+          <StoreBadge
             href={downloadLinks.playStore}
-            prefix="Get it on"
+            image={{
+              alt: "Get it on Google Play",
+              height: 250,
+              src: "/badges/get-it-on-google-play.png",
+              width: 646,
+            }}
             label="Google Play"
+            store="google-play"
           />
-          <DownloadLink
-            href={downloadLinks.apk}
-            prefix="Direct download"
-            label="Android APK"
-          />
+          <ApkDownload href={downloadLinks.apk} />
         </nav>
       </footer>
     </main>
