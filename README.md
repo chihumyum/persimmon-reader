@@ -10,7 +10,6 @@ Persimmon is a minimal and fast EPUB reader for people who want to read without 
   
   https://github.com/user-attachments/assets/a7dd5166-b9cd-491d-8166-04f7361ee171
   
-  <br />
   <sub>iPad · tap to play</sub>
 </p>
 
@@ -18,8 +17,6 @@ Persimmon is a minimal and fast EPUB reader for people who want to read without 
   
 https://github.com/user-attachments/assets/c6625e78-4b5d-452f-b901-cb161aed8039
 
-
-  <br />
   <sub>iPhone · tap to play</sub>
 </p>
 
