@@ -10,14 +10,12 @@ Persimmon is a minimal and fast EPUB reader for people who want to read without 
   
   https://github.com/user-attachments/assets/a7dd5166-b9cd-491d-8166-04f7361ee171
   
-  <sub>iPad · tap to play</sub>
 </p>
 
 <p align="center">
   
-https://github.com/user-attachments/assets/c6625e78-4b5d-452f-b901-cb161aed8039
+https://github.com/user-attachments/assets/57c71d41-e69f-4fd6-9cf0-4000cb227ba9
 
-  <sub>iPhone · tap to play</sub>
 </p>
 
 - **Simple and based.** A native-ish interface that leaves room for the book. No extra features like annotations or fancy AI stuff. Just focus on your reading.
