@@ -35,12 +35,12 @@ Do not redraw, recolor, crop, or add effects to the badge artwork.
 Requires Node.js 22.13 or newer.
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Validate the production build with:
 
 ```bash
-npm test
+pnpm check
 ```
