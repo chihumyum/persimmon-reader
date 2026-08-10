@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Persimmon — Pages that move with you",
+  title: "Persimmon — Read. Nothing else.",
   description:
     "A focused EPUB reader with fast, fluid page-turning for iPhone, iPad, and Android.",
   icons: {
