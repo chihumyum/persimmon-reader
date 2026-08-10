@@ -7,17 +7,18 @@
 Persimmon is a minimal and fast EPUB reader for people who want to read without distractions.
 
 <p align="center">
-  <a href="./public/media/page-turn-desktop.mp4">
-    <img src="./public/media/page-turn-poster.jpg" width="720" alt="Play the Persimmon iPad page-turn demo" />
-  </a>
+  
+  https://github.com/user-attachments/assets/a7dd5166-b9cd-491d-8166-04f7361ee171
+  
   <br />
   <sub>iPad · tap to play</sub>
 </p>
 
 <p align="center">
-  <a href="./public/media/page-turn-mobile.mp4">
-    <img src="./public/media/page-turn-mobile-poster.jpg" width="280" alt="Play the Persimmon iPhone page-turn demo" />
-  </a>
+  
+https://github.com/user-attachments/assets/c6625e78-4b5d-452f-b901-cb161aed8039
+
+
   <br />
   <sub>iPhone · tap to play</sub>
 </p>
