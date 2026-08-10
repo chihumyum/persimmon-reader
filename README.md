@@ -1,4 +1,4 @@
-# Persimmon landing page
+# Persimmon reader website
 
 A deliberately minimal, single-screen landing page for Persimmon. The real
 page-turn recording is the product demo; the site adds only the wordmark, one
