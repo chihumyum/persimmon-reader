@@ -8,17 +8,19 @@ const HD_MEDIA = "(min-width: 1600px) and (min-aspect-ratio: 4 / 5)";
 
 const variants = {
   desktop: {
-    poster: "/media/page-turn-poster.jpg",
     src: "/media/page-turn-desktop.mp4",
   },
   "desktop-hd": {
-    poster: "/media/page-turn-poster.jpg",
     src: "/media/page-turn-desktop-hd.mp4",
   },
   mobile: {
-    poster: "/media/page-turn-mobile-poster.jpg",
     src: "/media/page-turn-mobile.mp4",
   },
+} as const;
+
+const posters = {
+  desktop: "/media/page-turn-poster.jpg",
+  mobile: "/media/page-turn-mobile-poster.jpg",
 } as const;
 
 type VideoVariant = keyof typeof variants;
@@ -47,9 +49,6 @@ export function ResponsiveBackgroundVideo() {
       const source = variants[variant];
       const absoluteSource = new URL(source.src, window.location.href).href;
 
-      video.dataset.variant = variant;
-      video.poster = source.poster;
-
       if (video.currentSrc === absoluteSource) return;
 
       video.src = source.src;
@@ -70,22 +69,28 @@ export function ResponsiveBackgroundVideo() {
   }, []);
 
   return (
-    <video
-      ref={videoRef}
-      className="page-turn-video"
-      data-variant="desktop"
-      autoPlay
-      disablePictureInPicture
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      poster={variants.desktop.poster}
-      aria-hidden="true"
-    >
-      <source src={variants.mobile.src} type="video/mp4" media={MOBILE_MEDIA} />
-      <source src={variants["desktop-hd"].src} type="video/mp4" media={HD_MEDIA} />
-      <source src={variants.desktop.src} type="video/mp4" />
-    </video>
+    <>
+      <picture className="page-turn-poster">
+        <source srcSet={posters.mobile} media={MOBILE_MEDIA} />
+        {/* Posters should be served directly so the browser can select one before hydration. */}
+        <img src={posters.desktop} alt="" />
+      </picture>
+
+      <video
+        ref={videoRef}
+        className="page-turn-video"
+        autoPlay
+        disablePictureInPicture
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+      >
+        <source src={variants.mobile.src} type="video/mp4" media={MOBILE_MEDIA} />
+        <source src={variants["desktop-hd"].src} type="video/mp4" media={HD_MEDIA} />
+        <source src={variants.desktop.src} type="video/mp4" />
+      </video>
+    </>
   );
 }

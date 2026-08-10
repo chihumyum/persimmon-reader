@@ -43,6 +43,8 @@ test("renders the complete Persimmon landing page", async () => {
   assert.match(html, /page-turn-desktop\.mp4/);
   assert.match(html, /page-turn-desktop-hd\.mp4/);
   assert.match(html, /page-turn-mobile\.mp4/);
+  assert.match(html, /page-turn-poster\.jpg/);
+  assert.match(html, /page-turn-mobile-poster\.jpg/);
   assert.match(html, /autoplay/i);
   assert.match(html, /muted/i);
   assert.match(html, /playsinline/i);
@@ -68,30 +70,40 @@ test("renders public privacy and terms pages", async () => {
   assert.match(terms, /support@persimmon\.cc/);
 });
 
-test("keeps motion and download fallbacks explicit", async () => {
-  const [page, responsiveVideo, css, layout, packageJson] = await Promise.all([
-    readFile(new URL("app/page.tsx", projectRoot), "utf8"),
-    readFile(new URL("app/ResponsiveBackgroundVideo.tsx", projectRoot), "utf8"),
-    readFile(new URL("app/globals.css", projectRoot), "utf8"),
-    readFile(new URL("app/layout.tsx", projectRoot), "utf8"),
-    readFile(new URL("package.json", projectRoot), "utf8"),
-  ]);
+test("keeps motion, download, and repository fallbacks explicit", async () => {
+  const [page, responsiveVideo, css, layout, packageJson, envExample, githubMark] =
+    await Promise.all([
+      readFile(new URL("app/page.tsx", projectRoot), "utf8"),
+      readFile(new URL("app/ResponsiveBackgroundVideo.tsx", projectRoot), "utf8"),
+      readFile(new URL("app/globals.css", projectRoot), "utf8"),
+      readFile(new URL("app/layout.tsx", projectRoot), "utf8"),
+      readFile(new URL("package.json", projectRoot), "utf8"),
+      readFile(new URL(".env.example", projectRoot), "utf8"),
+      readFile(new URL("public/icons/github-mark.svg", projectRoot), "utf8"),
+    ]);
 
   assert.match(page, /process\.env\.NEXT_PUBLIC_APP_STORE_URL/);
   assert.match(page, /process\.env\.NEXT_PUBLIC_APK_URL/);
   assert.match(page, /process\.env\.NEXT_PUBLIC_PLAY_STORE_URL/);
+  assert.match(page, /process\.env\.NEXT_PUBLIC_GITHUB_LINK_ENABLED === "true"/);
+  assert.match(page, /process\.env\.NEXT_PUBLIC_GITHUB_URL/);
+  assert.match(page, /icons\/github-mark\.svg/);
   assert.match(page, /badges\/download-on-the-app-store\.svg/);
   assert.match(page, /badges\/get-it-on-google-play-trimmed\.png/);
   assert.match(page, /Android APK/);
   assert.match(responsiveVideo, /window\.matchMedia\(MOBILE_MEDIA\)/);
   assert.match(responsiveVideo, /window\.matchMedia\(HD_MEDIA\)/);
   assert.match(responsiveVideo, /video\.load\(\)/);
+  assert.match(responsiveVideo, /<picture className="page-turn-poster"/);
+  assert.match(responsiveVideo, /<source srcSet=\{posters\.mobile\} media=\{MOBILE_MEDIA\}/);
+  assert.doesNotMatch(responsiveVideo, /data-variant="desktop"|poster=\{/);
   assert.match(responsiveVideo, /page-turn-desktop-hd\.mp4/);
   assert.match(responsiveVideo, /page-turn-mobile\.mp4/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.match(css, /\.page-turn-video\s*\{[\s\S]*?display:\s*none/);
   assert.match(css, /\.page-turn-video\s*\{[\s\S]*?object-fit:\s*cover/);
   assert.match(css, /\.page-turn-video\s*\{[\s\S]*?transform:\s*scale\(1\.02\)/);
+  assert.match(css, /@media \(max-width:\s*760px\)[\s\S]*?\.page-turn-poster img,[\s\S]*?\.page-turn-video/);
   assert.match(css, /container-type:\s*inline-size/);
   assert.match(css, /100svh/);
   assert.match(css, /font-size:\s*clamp\([^;]*cqi/);
@@ -116,4 +128,7 @@ test("keeps motion and download fallbacks explicit", async () => {
   assert.doesNotMatch(css, /\.hero::before|center-halo-drift/);
   assert.match(layout, /themeColor:\s*"#17120e"/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton|drizzle/);
+  assert.match(envExample, /NEXT_PUBLIC_GITHUB_LINK_ENABLED=false/);
+  assert.match(envExample, /NEXT_PUBLIC_GITHUB_URL=https:\/\/github\.com\/chihumyum\/persimmon-reader/);
+  assert.match(githubMark, /<svg[^>]*viewBox="0 0 16 16"/);
 });

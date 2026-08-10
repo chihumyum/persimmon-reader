@@ -6,6 +6,13 @@ const downloadLinks = {
   playStore: process.env.NEXT_PUBLIC_PLAY_STORE_URL,
 } as const;
 
+const githubLink = {
+  enabled: process.env.NEXT_PUBLIC_GITHUB_LINK_ENABLED === "true",
+  url:
+    process.env.NEXT_PUBLIC_GITHUB_URL ??
+    "https://github.com/chihumyum/persimmon-reader",
+} as const;
+
 type StoreBadgeProps = {
   href?: string;
   image: {
@@ -134,6 +141,19 @@ export default function Home() {
       <footer className="landing-legal-links">
         <a href="/privacy">Privacy</a>
         <a href="/terms">Terms</a>
+        {githubLink.enabled && (
+          <a
+            className="landing-github-link"
+            href={githubLink.url}
+            rel="noreferrer"
+            target="_blank"
+            aria-label="View Persimmon on GitHub"
+          >
+            {/* Use GitHub's official Mark from Primer Octicons. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/icons/github-mark.svg" width="16" height="16" alt="" />
+          </a>
+        )}
       </footer>
     </main>
   );

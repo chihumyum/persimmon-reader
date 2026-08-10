@@ -259,16 +259,33 @@ a {
     radial-gradient(circle at 35% 62%, rgba(251, 247, 240, 0.12), transparent 34%),
     linear-gradient(135deg, #35251b 0%, #17120e 46%, #0a0908 100%);
 }
+.page-turn-poster,
 .page-turn-video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
+}
+.page-turn-poster {
+  display: block;
+  overflow: hidden;
+}
+.page-turn-poster img,
+.page-turn-video {
   object-fit: cover;
   object-position: center;
   transform: scale(1.02);
 }
-.page-turn-video[data-variant="mobile"] {
-  object-position: 50% 48%;
-  transform: scale(1.01);
+.page-turn-poster img {
+  width: 100%;
+  height: 100%;
+}
+@media (max-width: 760px) and (orientation: portrait), (max-aspect-ratio: 4 / 5) {
+  .page-turn-poster img,
+  .page-turn-video {
+    object-position: 50% 48%;
+    transform: scale(1.01);
+  }
 }
 .scrim {
   z-index: -1;
@@ -422,6 +439,7 @@ a.store-badge:hover {
   right: max(18px, env(safe-area-inset-right));
   bottom: max(14px, env(safe-area-inset-bottom));
   display: flex;
+  align-items: center;
   gap: 12px;
   color: rgba(255, 250, 244, 0.5);
   font-size: 0.64rem;
@@ -437,6 +455,23 @@ a.store-badge:hover {
   border-radius: 2px;
   outline: 2px solid var(--accent);
   outline-offset: 3px;
+}
+.landing-github-link {
+  display: flex;
+  width: 14px;
+  height: 14px;
+  align-items: center;
+  justify-content: center;
+}
+.landing-github-link img {
+  width: 13px;
+  height: 13px;
+  filter: invert(1);
+  opacity: 0.5;
+  transition: opacity 160ms ease;
+}
+.landing-github-link:hover img {
+  opacity: 0.9;
 }
 .legal-page {
   min-height: 100vh;
@@ -584,6 +619,9 @@ a.store-badge:hover {
     transition: none;
   }
   .landing-legal-links a {
+    transition: none;
+  }
+  .landing-github-link img {
     transition: none;
   }
 }
