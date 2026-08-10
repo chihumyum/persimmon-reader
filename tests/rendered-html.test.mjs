@@ -110,6 +110,8 @@ test("keeps motion, download, and repository fallbacks explicit", async () => {
   assert.match(css, /margin-top:\s*clamp\([^;]*cqi/);
   assert.match(css, /grid-template-columns:\s*max-content max-content/);
   assert.match(css, /\.hero-message p\s*\{[\s\S]*?margin:\s*0 0 0 clamp\(-/);
+  assert.match(css, /--download-button-width:\s*clamp\(88px,\s*19cqi,\s*128px\)/);
+  assert.match(css, /--download-gap:\s*clamp\(8px,\s*2cqi,\s*11px\)/);
   assert.match(css, /\.store-badge img\s*\{[\s\S]*?width:\s*auto/);
   assert.match(css, /--store-badge-visible-height:\s*clamp\([^;]*cqi/);
   assert.match(css, /--download-artwork-scale:\s*1\.2/);

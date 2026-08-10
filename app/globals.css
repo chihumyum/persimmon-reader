@@ -298,9 +298,9 @@ a {
   pointer-events: none;
 }
 .hero {
-  --download-button-width: clamp(74px, 19cqi, 128px);
+  --download-button-width: clamp(88px, 19cqi, 128px);
   --download-button-height: clamp(36px, 7cqi, 48px);
-  --download-gap: clamp(0px, 0cqi, 11px);
+  --download-gap: clamp(8px, 2cqi, 11px);
   --download-artwork-scale: 1.2;
   --store-badge-visible-height: clamp(21px, 4.2cqi, 28px);
 
