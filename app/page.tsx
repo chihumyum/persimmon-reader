@@ -121,15 +121,20 @@ export default function Home() {
             href={downloadLinks.playStore}
             image={{
               alt: "Get it on Google Play",
-              height: 250,
-              src: "/badges/get-it-on-google-play.png",
-              width: 646,
+              height: 168,
+              src: "/badges/get-it-on-google-play-trimmed.png",
+              width: 564,
             }}
             label="Google Play"
             store="google-play"
           />
         </nav>
       </section>
+
+      <footer className="landing-legal-links">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </footer>
     </main>
   );
 }

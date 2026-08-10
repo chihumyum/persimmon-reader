@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Persimmon — Read. Nothing else.",
   description:
-    "A focused EPUB reader with fast, fluid page-turning for iPhone, iPad, and Android.",
+    "A beautifully simple EPUB reader with meticulously tuned page turns and free Google Drive sync.",
   icons: {
     icon: "/favicon.png",
     apple: "/apple-touch-icon.png",

@@ -4,13 +4,13 @@ import test from "node:test";
 
 const projectRoot = new URL("../", import.meta.url);
 
-async function render() {
+async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${path}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -38,6 +38,8 @@ test("renders the complete Persimmon landing page", async () => {
   assert.match(html, /App Store/);
   assert.match(html, /Google Play/);
   assert.match(html, /Android APK/);
+  assert.match(html, /href="\/privacy"/);
+  assert.match(html, /href="\/terms"/);
   assert.match(html, /page-turn-desktop\.mp4/);
   assert.match(html, /page-turn-desktop-hd\.mp4/);
   assert.match(html, /page-turn-mobile\.mp4/);
@@ -45,6 +47,25 @@ test("renders the complete Persimmon landing page", async () => {
   assert.match(html, /muted/i);
   assert.match(html, /playsinline/i);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/i);
+});
+
+test("renders public privacy and terms pages", async () => {
+  const privacyResponse = await render("/privacy");
+  assert.equal(privacyResponse.status, 200);
+  const privacy = await privacyResponse.text();
+  assert.match(privacy, /<title>Privacy Policy — Persimmon<\/title>/i);
+  assert.match(privacy, /drive\.appdata/);
+  assert.match(privacy, /Limited Use/);
+  assert.match(privacy, /support@persimmon\.cc/);
+  assert.match(privacy, /Clear Google Drive Data/);
+
+  const termsResponse = await render("/terms");
+  assert.equal(termsResponse.status, 200);
+  const terms = await termsResponse.text();
+  assert.match(terms, /<title>Terms of Service — Persimmon<\/title>/i);
+  assert.match(terms, /Your books and content/);
+  assert.match(terms, /Google Drive and third-party services/);
+  assert.match(terms, /support@persimmon\.cc/);
 });
 
 test("keeps motion and download fallbacks explicit", async () => {
@@ -60,7 +81,7 @@ test("keeps motion and download fallbacks explicit", async () => {
   assert.match(page, /process\.env\.NEXT_PUBLIC_APK_URL/);
   assert.match(page, /process\.env\.NEXT_PUBLIC_PLAY_STORE_URL/);
   assert.match(page, /badges\/download-on-the-app-store\.svg/);
-  assert.match(page, /badges\/get-it-on-google-play\.png/);
+  assert.match(page, /badges\/get-it-on-google-play-trimmed\.png/);
   assert.match(page, /Android APK/);
   assert.match(responsiveVideo, /window\.matchMedia\(MOBILE_MEDIA\)/);
   assert.match(responsiveVideo, /window\.matchMedia\(HD_MEDIA\)/);
@@ -79,13 +100,18 @@ test("keeps motion and download fallbacks explicit", async () => {
   assert.match(css, /\.hero-message p\s*\{[\s\S]*?margin:\s*0 0 0 clamp\(-/);
   assert.match(css, /\.store-badge img\s*\{[\s\S]*?width:\s*auto/);
   assert.match(css, /--store-badge-visible-height:\s*clamp\([^;]*cqi/);
+  assert.match(css, /--download-artwork-scale:\s*1\.2/);
+  assert.match(css, /\.store-badge img\s*\{[\s\S]*?transform:\s*scale\(var\(--download-artwork-scale\)\)/);
   assert.match(css, /\.store-badge-app-store img\s*\{[\s\S]*?height:\s*var\(--store-badge-visible-height\)/);
-  assert.match(css, /\.store-badge-google-play img\s*\{[\s\S]*?height:\s*calc\(var\(--store-badge-visible-height\) \* 1\.4881\)/);
+  assert.match(css, /\.store-badge-google-play img\s*\{[\s\S]*?height:\s*var\(--store-badge-visible-height\)/);
   assert.match(css, /\.brand-name\s*\{[\s\S]*?font-family:[^;]*(?:Baskerville|Georgia)[^;]*;/);
   assert.match(css, /\.brand-name\s*\{[\s\S]*?width:\s*calc\(/);
   assert.match(css, /\.apk-badge-artwork\s*\{[\s\S]*?height:\s*var\(--store-badge-visible-height\)/);
+  assert.match(css, /\.apk-badge-artwork\s*\{[\s\S]*?left:\s*calc\(var\(--store-badge-visible-height\) \* -0\.107\)/);
+  assert.match(css, /\.apk-badge-artwork\s*\{[\s\S]*?transform:\s*scale\(var\(--download-artwork-scale\)\)/);
   assert.doesNotMatch(css, /\.store-badge\.is-disabled\s*\{[^}]*opacity:/);
-  assert.match(css, /\.store-badge-google-play\.is-disabled\s*\{[^}]*opacity:\s*0\.58/);
+  assert.match(css, /\.store-badge-google-play\.is-disabled\s*\{[^}]*opacity:\s*0\.38/);
+  assert.match(css, /\.store-badge-google-play\.is-disabled\s*\{[^}]*filter:\s*grayscale\(0\.8\) saturate\(0\.25\)/);
   assert.match(css, /\.scrim\s*\{[\s\S]*?linear-gradient\(/);
   assert.doesNotMatch(css, /\.hero::before|center-halo-drift/);
   assert.match(layout, /themeColor:\s*"#17120e"/);

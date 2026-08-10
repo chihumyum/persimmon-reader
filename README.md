@@ -1,50 +1,47 @@
-# Persimmon reader website
+# Persimmon
 
-A deliberately minimal, single-screen landing page for Persimmon. The real
-page-turn recording is the product demo; the site adds only a two-line message,
-the Persimmon wordmark, and three download destinations.
+<p align="right"><a href="./README.zh-CN.md">简体中文</a></p>
 
-## Background recordings
+<p align="center"><em>Read. Nothing else.</em></p>
 
-The responsive background assets live in `public/media/`:
+Persimmon is a minimal and fast EPUB reader for people who want to read without distractions.
 
-- `page-turn-desktop.mp4` — 1440 × 1080 default desktop version
-- `page-turn-desktop-hd.mp4` — 2000 × 1500 version for viewports at least 1600 px wide
-- `page-turn-mobile.mp4` — 720 × 1564 H.264 portrait version
-- `page-turn-poster.jpg` and `page-turn-mobile-poster.jpg` — loading posters
+<p align="center">
+  <a href="./public/media/page-turn-desktop.mp4">
+    <img src="./public/media/page-turn-poster.jpg" width="720" alt="Play the Persimmon iPad page-turn demo" />
+  </a>
+  <br />
+  <sub>iPad · tap to play</sub>
+</p>
 
-Portrait screens use the mobile recording, very wide screens use the HD
-recording, and all other layouts use the default desktop recording. The active
-source is re-evaluated when the viewport crosses those boundaries. Every source
-uses `object-fit: cover`, so the video fills the screen without letterboxing.
-The page disables video for visitors who prefer reduced motion, leaving the
-poster and fallback background in place.
+<p align="center">
+  <a href="./public/media/page-turn-mobile.mp4">
+    <img src="./public/media/page-turn-mobile-poster.jpg" width="280" alt="Play the Persimmon iPhone page-turn demo" />
+  </a>
+  <br />
+  <sub>iPhone · tap to play</sub>
+</p>
 
-## Configure downloads
+- **Simple and based.** A native-ish interface that leaves room for the book. No extra features like annotations or fancy AI stuff. Just focus on your reading.
+- **Meticulously tuned page turns.** Responsive to your finger, fluid even through rapid, repeated swipes, and built to keep up with fast reading. It feels kinda like turning pages in a paperback. It also supports a rapid page-flip gesture, like thumbing backward through a paperback.
+- **Free Google Drive sync.** You don't need to create a separate Persimmon account. Keep your books and reading progress with you across iOS and Android devices using your existing Google Drive.
 
-Copy `.env.example` to `.env.local`, then replace the empty values with the
-release URLs. Official store badges appear only when their matching listing URL
-is configured. `NEXT_PUBLIC_APK_URL` points to the signed Android APK. Empty
-values leave the corresponding badge disabled without dimming its artwork.
+## Interface
 
-The English App Store and Google Play badges in `public/badges/` are the
-unaltered official assets from [Apple Developer](https://developer.apple.com/app-store/marketing/guidelines/)
-and [Android Developers](https://developer.android.com/distribute/marketing-tools).
-Do not redraw, recolor, crop, or add effects to the badge artwork.
-The Android APK control is a separate custom badge and does not impersonate a
-Google Play listing.
+Real screens from Persimmon on iPhone, iPad, and Android.
 
-## Run locally
+<p align="center">
+  <img src="./public/screenshots/library-google-drive-sync.png" width="30%" alt="Persimmon library with Google Drive sync" />
+  &nbsp;
+  <img src="./public/screenshots/reader-style-controls.png" width="30%" alt="Persimmon reading style controls" />
+  &nbsp;
+  <img src="./public/screenshots/android-settings-google-drive.jpg" width="30%" alt="Persimmon settings and Google Drive sync on Android" />
+  <br />
+  <sub>Library and sync · Reading controls · App settings</sub>
+</p>
 
-Requires Node.js 22.13 or newer.
-
-```bash
-pnpm install
-pnpm dev
-```
-
-Validate the production build with:
-
-```bash
-pnpm check
-```
+<p align="center">
+  <img src="./public/screenshots/ipad-font-picker.png" width="90%" alt="Persimmon iPad reading view and font picker" />
+  <br />
+  <sub>iPad reading view and local font selection</sub>
+</p>
