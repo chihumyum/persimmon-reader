@@ -40,6 +40,8 @@ test("renders the complete Persimmon landing page", async () => {
   assert.match(html, /Android APK/);
   assert.match(html, /href="\/privacy"/);
   assert.match(html, /href="\/terms"/);
+  assert.match(html, /href="https:\/\/github\.com\/chihumyum\/Persimmon"/);
+  assert.match(html, /aria-label="View Persimmon on GitHub"/);
   assert.match(html, /page-turn-desktop\.mp4/);
   assert.match(html, /page-turn-desktop-hd\.mp4/);
   assert.match(html, /page-turn-mobile\.mp4/);
@@ -85,8 +87,7 @@ test("keeps motion, download, and repository fallbacks explicit", async () => {
   assert.match(page, /process\.env\.NEXT_PUBLIC_APP_STORE_URL/);
   assert.match(page, /process\.env\.NEXT_PUBLIC_APK_URL/);
   assert.match(page, /process\.env\.NEXT_PUBLIC_PLAY_STORE_URL/);
-  assert.match(page, /process\.env\.NEXT_PUBLIC_GITHUB_LINK_ENABLED === "true"/);
-  assert.match(page, /process\.env\.NEXT_PUBLIC_GITHUB_URL/);
+  assert.match(page, /https:\/\/github\.com\/chihumyum\/Persimmon/);
   assert.match(page, /icons\/github-mark\.svg/);
   assert.match(page, /badges\/download-on-the-app-store\.svg/);
   assert.match(page, /badges\/get-it-on-google-play-trimmed\.png/);
@@ -130,7 +131,6 @@ test("keeps motion, download, and repository fallbacks explicit", async () => {
   assert.doesNotMatch(css, /\.hero::before|center-halo-drift/);
   assert.match(layout, /themeColor:\s*"#17120e"/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton|drizzle/);
-  assert.match(envExample, /NEXT_PUBLIC_GITHUB_LINK_ENABLED=false/);
-  assert.match(envExample, /NEXT_PUBLIC_GITHUB_URL=https:\/\/github\.com\/chihumyum\/persimmon-reader/);
+  assert.doesNotMatch(envExample, /NEXT_PUBLIC_GITHUB/);
   assert.match(githubMark, /<svg[^>]*viewBox="0 0 16 16"/);
 });
