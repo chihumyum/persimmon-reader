@@ -39,6 +39,8 @@ jobs:
 
       - name: Build
         run: pnpm build
+        env:
+          NEXT_PUBLIC_APK_URL: ${{ vars.NEXT_PUBLIC_APK_URL }}
 
       - name: Deploy
         run: pnpm deploy:cloudflare
