@@ -63,6 +63,12 @@ test("renders public privacy, terms, and support pages", async () => {
   assert.match(privacy, /Limited Use/);
   assert.match(privacy, /support@persimmon\.cc/);
   assert.match(privacy, /Clear Google Drive Data/);
+  assert.match(
+    privacy,
+    /does not pass through or reside on servers controlled by the Persimmon developer/,
+  );
+  assert.match(privacy, /Cloudflare Privacy Policy/);
+  assert.match(privacy, /first-party behavioral analytics/);
 
   const termsResponse = await render("/terms");
   assert.equal(termsResponse.status, 200);
@@ -70,6 +76,8 @@ test("renders public privacy, terms, and support pages", async () => {
   assert.match(terms, /<title>Terms of Service — Persimmon<\/title>/i);
   assert.match(terms, /Your books and content/);
   assert.match(terms, /Google Drive and third-party services/);
+  assert.match(terms, /open-source license in the corresponding repository/);
+  assert.match(terms, /href="\/privacy"/);
   assert.match(terms, /support@persimmon\.cc/);
 
   const supportResponse = await render("/support");
@@ -79,6 +87,10 @@ test("renders public privacy, terms, and support pages", async () => {
   assert.match(support, /mailto:support@persimmon\.cc\?subject=Persimmon%20Support/);
   assert.match(support, /DRM-free, reflowable EPUB 2\/3/);
   assert.match(support, /private App Data folder/);
+  assert.match(
+    support,
+    /without passing through a server controlled by the Persimmon developer/,
+  );
   assert.match(support, /github\.com\/chihumyum\/Persimmon/);
 });
 

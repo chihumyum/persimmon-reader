@@ -34,13 +34,16 @@ export default function SupportPage() {
         <h3>Google Drive 同步</h3>
         <p>
           同步功能是可选的，只使用 Persimmon 专属的隐藏 App Data 目录，不会读取普通
-          Google Drive 文件。请在所有设备上连接同一个 Google 账号。
+          Google Drive 文件。同步数据从 App 直接发送到你自己的 Google Drive，不经过
+          Persimmon 开发者控制的服务器。请在所有设备上连接同一个 Google 账号。
         </p>
 
         <h3>报告问题</h3>
         <p>
-          邮件中请附上设备型号、系统和 App 版本、复现步骤，以及相关错误提示或截图。请勿发送密码、
-          Google 授权码或未经授权的电子书文件。
+          邮件中请附上设备型号、系统和 App 版本、复现步骤，以及相关错误提示或截图。请勿发送密码、Google
+          授权码或未经授权的电子书文件。发送邮件后，Persimmon 开发者会收到并仅为处理支持请求
+          使用你提供的地址和内容；详情及删除方式请查看
+          <a href="/privacy">隐私政策</a>。
         </p>
 
         <h3>GitHub</h3>
@@ -70,14 +73,19 @@ export default function SupportPage() {
         <h3>Google Drive sync</h3>
         <p>
           Sync is optional and uses Persimmon&apos;s private App Data folder. It cannot read
-          ordinary files in your Google Drive. Connect the same Google account on each device.
+          ordinary files in your Google Drive. Sync data travels directly from the app to your
+          own Google Drive without passing through a server controlled by the Persimmon developer.
+          Connect the same Google account on each device.
         </p>
 
         <h3>Reporting a problem</h3>
         <p>
           Include your device model, operating system and app version, steps to reproduce the
           problem, and any relevant error message or screenshot. Do not send passwords, Google
-          authorization codes, or ebook files you are not authorized to share.
+          authorization codes, or ebook files you are not authorized to share. After you send an
+          email, the Persimmon developer receives the address and content you provide and uses it
+          only to handle the support request. See the <a href="/privacy">Privacy Policy</a> for
+          details and deletion options.
         </p>
 
         <h3>GitHub</h3>
