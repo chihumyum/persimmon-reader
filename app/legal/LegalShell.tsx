@@ -20,7 +20,8 @@ export function LegalShell({
         <Link className="legal-wordmark" href="/" aria-label="Persimmon home">
           persimmon
         </Link>
-        <nav className="legal-nav" aria-label="Legal pages">
+        <nav className="legal-nav" aria-label="Information pages">
+          <a href="/support">Support</a>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
         </nav>

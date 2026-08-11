@@ -134,6 +134,7 @@ export default function Home() {
       </section>
 
       <footer className="landing-legal-links">
+        <a href="/support">Support</a>
         <a href="/privacy">Privacy</a>
         <a href="/terms">Terms</a>
         <a

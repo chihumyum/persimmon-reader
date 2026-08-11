@@ -584,6 +584,27 @@ a.store-badge:hover {
   text-decoration-color: rgba(33, 28, 24, 0.3);
   text-underline-offset: 0.18em;
 }
+.legal-document .support-contact-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 18px;
+  border: 1px solid rgba(33, 28, 24, 0.28);
+  border-radius: 999px;
+  color: #211c18;
+  font-size: 0.84rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+.legal-document .support-contact-link:hover {
+  border-color: rgba(33, 28, 24, 0.52);
+  background: rgba(33, 28, 24, 0.05);
+}
+.legal-document .support-contact-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
 .legal-document code {
   border-radius: 4px;
   padding: 0.12em 0.3em;
@@ -622,6 +643,9 @@ a.store-badge:hover {
     transition: none;
   }
   .landing-github-link img {
+    transition: none;
+  }
+  .legal-document .support-contact-link {
     transition: none;
   }
 }

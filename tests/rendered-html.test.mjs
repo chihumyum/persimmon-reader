@@ -38,6 +38,7 @@ test("renders the complete Persimmon landing page", async () => {
   assert.match(html, /App Store/);
   assert.match(html, /Google Play/);
   assert.match(html, /Android APK/);
+  assert.match(html, /href="\/support"/);
   assert.match(html, /href="\/privacy"/);
   assert.match(html, /href="\/terms"/);
   assert.match(html, /href="https:\/\/github\.com\/chihumyum\/Persimmon"/);
@@ -53,7 +54,7 @@ test("renders the complete Persimmon landing page", async () => {
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/i);
 });
 
-test("renders public privacy and terms pages", async () => {
+test("renders public privacy, terms, and support pages", async () => {
   const privacyResponse = await render("/privacy");
   assert.equal(privacyResponse.status, 200);
   const privacy = await privacyResponse.text();
@@ -70,6 +71,15 @@ test("renders public privacy and terms pages", async () => {
   assert.match(terms, /Your books and content/);
   assert.match(terms, /Google Drive and third-party services/);
   assert.match(terms, /support@persimmon\.cc/);
+
+  const supportResponse = await render("/support");
+  assert.equal(supportResponse.status, 200);
+  const support = await supportResponse.text();
+  assert.match(support, /<title>Support — Persimmon<\/title>/i);
+  assert.match(support, /mailto:support@persimmon\.cc\?subject=Persimmon%20Support/);
+  assert.match(support, /DRM-free, reflowable EPUB 2\/3/);
+  assert.match(support, /private App Data folder/);
+  assert.match(support, /github\.com\/chihumyum\/Persimmon/);
 });
 
 test("keeps motion, download, and repository fallbacks explicit", async () => {
