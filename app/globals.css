@@ -374,8 +374,7 @@ a {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  transition: opacity 160ms ease,
-    transform 160ms ease;
+  transition: opacity 160ms ease;
 }
 .store-badge img {
   display: block;
@@ -423,12 +422,12 @@ a {
 .store-badge.is-disabled {
   cursor: default;
 }
+a.store-badge {
+  cursor: pointer;
+}
 .store-badge-google-play.is-disabled {
   opacity: 0.38;
   filter: grayscale(0.8) saturate(0.25);
-}
-a.store-badge:hover {
-  transform: translateY(-2px);
 }
 .store-badge:focus-visible {
   outline: 3px solid var(--accent);

@@ -197,6 +197,11 @@ test("keeps motion, download, and repository fallbacks explicit", async () => {
     /\.apk-badge-artwork\s*\{[\s\S]*?transform:\s*scale\(var\(--download-artwork-scale\)\)/,
   );
   assert.doesNotMatch(css, /\.store-badge\.is-disabled\s*\{[^}]*opacity:/);
+  assert.match(css, /a\.store-badge\s*\{[^}]*cursor:\s*pointer/);
+  assert.doesNotMatch(
+    css,
+    /a\.store-badge:hover\s*\{[^}]*transform:\s*translateY/,
+  );
   assert.match(
     css,
     /\.store-badge-google-play\.is-disabled\s*\{[^}]*opacity:\s*0\.38/,
