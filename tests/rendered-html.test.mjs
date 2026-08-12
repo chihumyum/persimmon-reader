@@ -106,7 +106,6 @@ test("renders public privacy, terms, and support pages", async () => {
 test("keeps motion, download, and repository fallbacks explicit", async () => {
   const [
     page,
-    spotlightBadgeLink,
     responsiveVideo,
     css,
     layout,
@@ -115,7 +114,6 @@ test("keeps motion, download, and repository fallbacks explicit", async () => {
     githubMark,
   ] = await Promise.all([
     readFile(new URL("app/page.tsx", projectRoot), "utf8"),
-    readFile(new URL("app/SpotlightBadgeLink.tsx", projectRoot), "utf8"),
     readFile(new URL("app/ResponsiveBackgroundVideo.tsx", projectRoot), "utf8"),
     readFile(new URL("app/globals.css", projectRoot), "utf8"),
     readFile(new URL("app/layout.tsx", projectRoot), "utf8"),
@@ -133,11 +131,7 @@ test("keeps motion, download, and repository fallbacks explicit", async () => {
   assert.match(page, /badges\/download-on-the-app-store\.svg/);
   assert.match(page, /badges\/get-it-on-google-play-trimmed\.png/);
   assert.match(page, /Android APK/);
-  assert.match(page, /SpotlightBadgeLink/);
-  assert.match(spotlightBadgeLink, /getBoundingClientRect\(\)/);
-  assert.match(spotlightBadgeLink, /--badge-highlight-x/);
-  assert.match(spotlightBadgeLink, /--badge-highlight-y/);
-  assert.match(spotlightBadgeLink, /onPointerMove=\{updateSpotlight\}/);
+  assert.doesNotMatch(page, /SpotlightBadgeLink/);
   assert.match(responsiveVideo, /window\.matchMedia\(MOBILE_MEDIA\)/);
   assert.match(responsiveVideo, /window\.matchMedia\(HD_MEDIA\)/);
   assert.match(responsiveVideo, /video\.load\(\)/);
@@ -205,11 +199,8 @@ test("keeps motion, download, and repository fallbacks explicit", async () => {
   );
   assert.doesNotMatch(css, /\.store-badge\.is-disabled\s*\{[^}]*opacity:/);
   assert.match(css, /a\.store-badge\s*\{[^}]*cursor:\s*pointer/);
-  assert.match(
-    css,
-    /a\.store-badge::after\s*\{[\s\S]*?radial-gradient\([\s\S]*?var\(--badge-highlight-x\)[\s\S]*?var\(--badge-highlight-y\)/,
-  );
-  assert.match(css, /a\.store-badge:hover::after/);
+  assert.doesNotMatch(css, /badge-highlight|a\.store-badge::after/);
+  assert.doesNotMatch(css, /a\.store-badge:hover\s*\{[^}]*filter:\s*brightness/);
   assert.doesNotMatch(
     css,
     /a\.store-badge:hover\s*\{[^}]*transform:\s*translateY/,
