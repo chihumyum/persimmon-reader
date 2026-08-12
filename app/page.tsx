@@ -1,12 +1,12 @@
 import { ResponsiveBackgroundVideo } from "./ResponsiveBackgroundVideo";
 
 const downloadLinks = {
-  appStore: process.env.NEXT_PUBLIC_APP_STORE_URL,
+  appStore: undefined,
   apk: process.env.NEXT_PUBLIC_APK_URL,
   playStore: process.env.NEXT_PUBLIC_PLAY_STORE_URL,
 } as const;
 
-const githubUrl = "https://github.com/chihumyum/Persimmon";
+const githubUrl = "https://github.com/chihumyum/persimmon-reader";
 
 type StoreBadgeProps = {
   href?: string;

@@ -41,3 +41,9 @@ Real screens from Persimmon on iPhone, iPad, and Android.
   <br />
   <sub>iPad reading view and local font selection</sub>
 </p>
+
+## License
+
+The source code in this repository is available under the [MIT License](./LICENSE).
+The Persimmon name and branding, product screenshots and demo media, and third-party
+store badges and marks are not included in that license unless separately stated.
