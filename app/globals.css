@@ -423,7 +423,38 @@ a {
   cursor: default;
 }
 a.store-badge {
+  --badge-highlight-x: 50%;
+  --badge-highlight-y: 50%;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   cursor: pointer;
+  transition: filter 160ms ease;
+}
+a.store-badge::after {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle 42px at var(--badge-highlight-x) var(--badge-highlight-y),
+    rgba(255, 255, 255, 0.34) 0,
+    rgba(255, 255, 255, 0.14) 38%,
+    transparent 76%
+  );
+  content: "";
+  mix-blend-mode: screen;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 140ms ease;
+}
+a.store-badge:hover {
+  filter: brightness(1.08);
+}
+a.store-badge:hover::after,
+a.store-badge:focus-visible::after {
+  opacity: 1;
 }
 .store-badge-google-play.is-disabled {
   opacity: 0.38;
@@ -636,6 +667,10 @@ a.store-badge {
     display: none;
   }
   .store-badge {
+    transition: none;
+  }
+  a.store-badge,
+  a.store-badge::after {
     transition: none;
   }
   .landing-legal-links a {

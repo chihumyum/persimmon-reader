@@ -1,4 +1,5 @@
 import { ResponsiveBackgroundVideo } from "./ResponsiveBackgroundVideo";
+import { SpotlightBadgeLink } from "./SpotlightBadgeLink";
 
 const downloadLinks = {
   appStore: undefined,
@@ -45,7 +46,7 @@ function StoreBadge({ href, image, label, store }: StoreBadgeProps) {
   }
 
   return (
-    <a
+    <SpotlightBadgeLink
       className={`store-badge store-badge-${store}`}
       href={href}
       rel="noreferrer"
@@ -53,7 +54,7 @@ function StoreBadge({ href, image, label, store }: StoreBadgeProps) {
       aria-label={image.alt}
     >
       {artwork}
-    </a>
+    </SpotlightBadgeLink>
   );
 }
 
@@ -78,14 +79,14 @@ function ApkBadge({ href }: { href?: string }) {
   }
 
   return (
-    <a
+    <SpotlightBadgeLink
       className="store-badge apk-badge"
       href={href}
       download
       aria-label="Download Android APK"
     >
       {artwork}
-    </a>
+    </SpotlightBadgeLink>
   );
 }
 
