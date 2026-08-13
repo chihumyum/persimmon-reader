@@ -19,7 +19,7 @@ https://github.com/user-attachments/assets/57c71d41-e69f-4fd6-9cf0-4000cb227ba9
 </p>
 
 - **Simple and based.** A native-ish interface that leaves room for the book. No extra features like annotations or fancy AI stuff. Just focus on your reading.
-- **Meticulously tuned page turns.** Responsive to your finger, fluid even through rapid, repeated swipes, and built to keep up with fast reading. It feels kinda like turning pages in a paperback. It also supports a rapid page-flip gesture, like thumbing backward through a paperback.
+- **Meticulously tuned page turns.** Responsive to your finger, fluid even through rapid, repeated swipes, and built to keep up with fast reading. It feels kinda like turning pages in a paperback. It also supports a rapid page-flip gesture, like thumbing backward through a paperback. The animation core is open source as [`@chihumyum/react-native-natural-page-turn`](https://github.com/chihumyum/react-native-natural-page-turn).
 - **Free Google Drive sync.** You don't need to create a separate Persimmon account. Keep your books and reading progress with you across iOS and Android devices using your existing Google Drive.
 
 ## Interface
