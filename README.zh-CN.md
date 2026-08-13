@@ -6,6 +6,10 @@
 
 柿子是一款极简、快速的 EPUB 阅读器，让你不受干扰地读书。
 
+> [!IMPORTANT]
+> 本公开仓库包含 Persimmon 网站、发布下载与产品信息。Persimmon 应用本身为闭源软件，
+> 其源代码不包含在本仓库中。GitHub 在 Release 页面自动生成的源码压缩包仅包含本网站源码。
+
 <p align="center">
   <a href="./public/media/page-turn-desktop.mp4">
     <img src="./public/media/page-turn-poster.jpg" width="720" alt="播放 Persimmon iPad 翻页演示" />
@@ -25,6 +29,11 @@
 - **简单而且纯粹。** 带原生感的 UI，把空间留给内容。没有批注，也没有花哨的 AI 功能。专心读书。
 - **精心打磨的翻页动画。** 跟手，即使快速连续滑动也依然流畅，能跟上快速阅读。翻起页来，就像在翻一本纸质书。还支持极速翻页手势，模拟用拇指快速往回拨动纸质书页的动作。翻页核心已作为 [`@chihumyum/react-native-natural-page-turn`](https://github.com/chihumyum/react-native-natural-page-turn) 开源。
 - **免费的 Google Drive 同步。** 不需要额外创建 Persimmon 账号。使用你现有的 Google Drive，在 iOS 和 Android 设备间同步书籍与阅读进度。
+
+## 下载
+
+带版本号的 Android APK、SHA-256 校验文件和更新说明可从
+[GitHub Releases](https://github.com/chihumyum/persimmon-reader/releases) 获取。官网也会通过固定下载地址提供当前 Android 版本。
 
 ## 界面
 
