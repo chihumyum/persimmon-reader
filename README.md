@@ -6,7 +6,6 @@
 
 Persimmon is a minimal and fast EPUB reader for people who want to read without distractions.
 
-> [!IMPORTANT]
 > This public repository contains the Persimmon website, release downloads, and
 > product information.
 

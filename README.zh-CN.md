@@ -6,12 +6,12 @@
 
 柿子是一款极简、快速的 EPUB 阅读器，让你不受干扰地读书。
 
-> [!IMPORTANT]
-> 本公开仓库包含 Persimmon 网站、发布下载与产品信息。
+
+> 本公开仓库包含 柿子阅读 网站、发布下载与产品信息。
 
 <p align="center">
   <a href="./public/media/page-turn-desktop.mp4">
-    <img src="./public/media/page-turn-poster.jpg" width="720" alt="播放 Persimmon iPad 翻页演示" />
+    <img src="./public/media/page-turn-poster.jpg" width="720" alt="播放 柿子阅读 iPad 翻页演示" />
   </a>
   <br />
   <sub>iPad · 点击播放</sub>
