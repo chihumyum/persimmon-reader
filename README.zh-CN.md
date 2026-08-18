@@ -1,55 +1,43 @@
-# Persimmon
+# Persimmon 网站
 
 <p align="right"><a href="./README.md">English</a></p>
 
-<p align="center"><em>Read. Nothing else.</em></p>
+这个仓库仅包含 [persimmon.cc](https://persimmon.cc) 的网站源码，负责维护公开
+landing page，以及 Persimmon App 所需的支持、隐私政策与服务条款页面。
 
-柿子是一款极简、快速的 EPUB 阅读器，让你不受干扰地读书。
+应用源码、产品文档、issue 与发布自动化由 Persimmon 应用主仓库维护，不放在这里。
 
+## 页面
 
-> 本公开仓库包含 柿子阅读 网站、发布下载与产品信息。
+- `/` — landing page 与下载入口
+- `/support` — 支持联系方式与排障信息
+- `/privacy` — 隐私政策
+- `/terms` — 服务条款
 
-<p align="center">
-  <a href="./public/media/page-turn-desktop.mp4">
-    <img src="./public/media/page-turn-poster.jpg" width="720" alt="播放 柿子阅读 iPad 翻页演示" />
-  </a>
-  <br />
-  <sub>iPad · 点击播放</sub>
-</p>
+## 本地开发
 
-<p align="center">
-  <a href="./public/media/page-turn-mobile.mp4">
-    <img src="./public/media/page-turn-mobile-poster.jpg" width="280" alt="播放 Persimmon iPhone 翻页演示" />
-  </a>
-  <br />
-  <sub>iPhone · 点击播放</sub>
-</p>
+网站使用 Node.js 22、pnpm 10、Next.js 和 Vinext。
 
-- **简单而且纯粹。** 带原生感的 UI，把空间留给内容。没有批注，也没有花哨的 AI 功能。专心读书。
-- **精心打磨的翻页动画。** 跟手，即使快速连续滑动也依然流畅，能跟上快速阅读。翻起页来，就像在翻一本纸质书。还支持极速翻页手势，模拟用拇指快速往回拨动纸质书页的动作。翻页核心已作为 [`@chihumyum/react-native-natural-page-turn`](https://github.com/chihumyum/react-native-natural-page-turn) 开源。
-- **免费的 Google Drive 同步。** 不需要额外创建 Persimmon 账号。使用你现有的 Google Drive，在 iOS 和 Android 设备间同步书籍与阅读进度。
+```bash
+pnpm install --frozen-lockfile
+pnpm dev
+```
 
-## 界面
+提交改动前运行完整校验：
 
-柿子在 iPhone、iPad 和 Android 设备上的真实界面。
+```bash
+pnpm check
+```
 
-<p align="center">
-  <img src="./public/screenshots/library-google-drive-sync.png" width="30%" alt="带有 Google Drive 同步状态的 Persimmon 书库" />
-  &nbsp;
-  <img src="./public/screenshots/reader-style-controls.png" width="30%" alt="Persimmon 阅读样式控制" />
-  &nbsp;
-  <img src="./public/screenshots/android-settings-google-drive.jpg" width="30%" alt="Persimmon Android 设置与 Google Drive 同步" />
-  <br />
-  <sub>书库与同步 · 阅读控制 · 应用设置</sub>
-</p>
+## 配置与部署
 
-<p align="center">
-  <img src="./public/screenshots/ipad-font-picker.png" width="90%" alt="Persimmon iPad 阅读界面与字体选择器" />
-  <br />
-  <sub>iPad 阅读界面与本地字体选择</sub>
-</p>
+本地需要覆盖环境变量时参考 [`.env.example`](./.env.example)。推送到 `main`
+后，`.github/workflows/deploy-cloudflare.yml` 会把生产版本部署到 Cloudflare
+Workers。
+
+这个仓库只维护网站。App 实现、功能说明和二进制发布均属于应用主仓库。
 
 ## 许可证
 
-本仓库的源代码采用 [MIT License](./LICENSE) 授权。除非另有说明，Persimmon
-名称与品牌、产品截图和演示媒体，以及第三方应用商店徽章与标识不包含在该许可范围内。
+网站源码采用 [MIT License](./LICENSE)。除非另有说明，该许可证不授予
+Persimmon 名称、产品标识、截图、演示媒体与第三方应用商店标识的使用权。

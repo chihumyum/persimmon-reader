@@ -51,6 +51,8 @@ test("renders the complete Persimmon landing page", async () => {
   assert.match(html, /page-turn-mobile\.mp4/);
   assert.match(html, /page-turn-poster\.jpg/);
   assert.match(html, /page-turn-mobile-poster\.jpg/);
+  assert.match(html, /property="og:image" content="https:\/\/persimmon\.cc\/og\.png"/);
+  assert.match(html, /name="twitter:card" content="summary_large_image"/);
   assert.match(html, /autoplay/i);
   assert.match(html, /muted/i);
   assert.match(html, /playsinline/i);
