@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Persimmon — Read. Nothing else.",
   description:
-    "A beautifully simple EPUB reader with meticulously tuned page turns and free Google Drive sync.",
+    "A beautifully simple EPUB reader with meticulously tuned page turns and free cloud sync.",
   icons: {
     icon: "/favicon.png",
     apple: "/apple-touch-icon.png",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Persimmon — Read. Nothing else.",
     description:
-      "A beautifully simple EPUB reader with meticulously tuned page turns and free Google Drive sync.",
+      "A beautifully simple EPUB reader with meticulously tuned page turns and free cloud sync.",
     type: "website",
     url: "https://persimmon.cc",
     images: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Persimmon — Read. Nothing else.",
     description:
-      "A beautifully simple EPUB reader with meticulously tuned page turns and free Google Drive sync.",
+      "A beautifully simple EPUB reader with meticulously tuned page turns and free cloud sync.",
     images: ["https://persimmon.cc/og.png"],
   },
 };
