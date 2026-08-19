@@ -7,7 +7,8 @@ It maintains the public landing page and the support, privacy, and terms pages
 required by the Persimmon app.
 
 Application source, product documentation, issues, and release automation are
-maintained in the Persimmon application repository rather than here.
+maintained in the [Persimmon application repository](https://github.com/chihumyum/Persimmon)
+rather than here.
 
 ## Routes
 

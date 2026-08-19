@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { LegalShell } from "../legal/LegalShell";
 
-const githubUrl = "https://github.com/chihumyum/persimmon-reader";
+const appRepositoryUrl = "https://github.com/chihumyum/Persimmon";
 const supportEmail = "support@persimmon.cc";
 const supportMailto = `mailto:${supportEmail}?subject=Persimmon%20Support`;
 
@@ -52,8 +52,8 @@ export default function SupportPage() {
 
         <h3>GitHub</h3>
         <p>
-          你也可以在 <a href={githubUrl}>GitHub</a> 查看 Persimmon
-          项目并提交技术问题。
+          你也可以在 <a href={appRepositoryUrl}>GitHub</a> 查看 Persimmon App
+          源码并提交技术问题。
         </p>
       </section>
 
@@ -99,8 +99,8 @@ export default function SupportPage() {
 
         <h3>GitHub</h3>
         <p>
-          You can also view the Persimmon project and report technical issues on{" "}
-          <a href={githubUrl}>GitHub</a>.
+          You can also view the Persimmon app source and report technical issues
+          on <a href={appRepositoryUrl}>GitHub</a>.
         </p>
       </section>
     </LegalShell>

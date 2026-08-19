@@ -5,7 +5,8 @@
 这个仓库仅包含 [persimmon.cc](https://persimmon.cc) 的网站源码，负责维护公开
 landing page，以及 Persimmon App 所需的支持、隐私政策与服务条款页面。
 
-应用源码、产品文档、issue 与发布自动化由 Persimmon 应用主仓库维护，不放在这里。
+应用源码、产品文档、issue 与发布自动化由 [Persimmon 应用主仓库](https://github.com/chihumyum/Persimmon)
+维护，不放在这里。
 
 ## 页面
 

@@ -43,9 +43,12 @@ test("renders the complete Persimmon landing page", async () => {
   assert.match(html, /href="\/terms"/);
   assert.match(
     html,
-    /href="https:\/\/github\.com\/chihumyum\/persimmon-reader"/,
+    /href="https:\/\/github\.com\/chihumyum\/Persimmon"/,
   );
-  assert.match(html, /aria-label="View Persimmon on GitHub"/);
+  assert.match(
+    html,
+    /aria-label="View the Persimmon app source on GitHub"/,
+  );
   assert.match(html, /page-turn-desktop\.mp4/);
   assert.match(html, /page-turn-desktop-hd\.mp4/);
   assert.match(html, /page-turn-mobile\.mp4/);
@@ -98,7 +101,7 @@ test("renders public privacy, terms, and support pages", async () => {
   );
   assert.match(support, /DRM-free, reflowable EPUB 2\/3/);
   assert.match(support, /private App Data folder/);
-  assert.match(support, /github\.com\/chihumyum\/persimmon-reader/);
+  assert.match(support, /github\.com\/chihumyum\/Persimmon/);
   assert.match(
     support,
     /without passing through a server controlled by the Persimmon developer/,
@@ -128,7 +131,7 @@ test("keeps motion, download, and repository fallbacks explicit", async () => {
   assert.doesNotMatch(page, /process\.env\.NEXT_PUBLIC_APP_STORE_URL/);
   assert.match(page, /process\.env\.NEXT_PUBLIC_APK_URL/);
   assert.match(page, /process\.env\.NEXT_PUBLIC_PLAY_STORE_URL/);
-  assert.match(page, /https:\/\/github\.com\/chihumyum\/persimmon-reader/);
+  assert.match(page, /https:\/\/github\.com\/chihumyum\/Persimmon/);
   assert.match(page, /icons\/github-mark\.svg/);
   assert.match(page, /badges\/download-on-the-app-store\.svg/);
   assert.match(page, /badges\/get-it-on-google-play-trimmed\.png/);

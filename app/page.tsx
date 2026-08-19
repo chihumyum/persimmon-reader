@@ -6,7 +6,7 @@ const downloadLinks = {
   playStore: process.env.NEXT_PUBLIC_PLAY_STORE_URL,
 } as const;
 
-const githubUrl = "https://github.com/chihumyum/persimmon-reader";
+const appRepositoryUrl = "https://github.com/chihumyum/Persimmon";
 
 type StoreBadgeProps = {
   href?: string;
@@ -139,10 +139,10 @@ export default function Home() {
         <a href="/terms">Terms</a>
         <a
           className="landing-github-link"
-          href={githubUrl}
+          href={appRepositoryUrl}
           rel="noreferrer"
           target="_blank"
-          aria-label="View Persimmon on GitHub"
+          aria-label="View the Persimmon app source on GitHub"
         >
           {/* Use GitHub's official Mark from Primer Octicons. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
