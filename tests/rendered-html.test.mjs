@@ -36,6 +36,10 @@ test("renders the complete Persimmon landing page", async () => {
   assert.match(html, /Nothing else\./);
   assert.match(html, />persimmon</);
   assert.match(html, /App Store/);
+  assert.match(
+    html,
+    /href="https:\/\/apps\.apple\.com\/us\/app\/persimmon-reader\/id6800041021"/,
+  );
   assert.match(html, /Google Play/);
   assert.match(html, /Android APK/);
   assert.match(html, /href="\/support"/);
@@ -127,7 +131,10 @@ test("keeps motion, download, and repository fallbacks explicit", async () => {
     readFile(new URL("public/icons/github-mark.svg", projectRoot), "utf8"),
   ]);
 
-  assert.match(page, /appStore:\s*undefined/);
+  assert.match(
+    page,
+    /appStore:\s*"https:\/\/apps\.apple\.com\/us\/app\/persimmon-reader\/id6800041021"/,
+  );
   assert.doesNotMatch(page, /process\.env\.NEXT_PUBLIC_APP_STORE_URL/);
   assert.match(page, /process\.env\.NEXT_PUBLIC_APK_URL/);
   assert.match(page, /process\.env\.NEXT_PUBLIC_PLAY_STORE_URL/);

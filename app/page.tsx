@@ -1,7 +1,7 @@
 import { ResponsiveBackgroundVideo } from "./ResponsiveBackgroundVideo";
 
 const downloadLinks = {
-  appStore: undefined,
+  appStore: "https://apps.apple.com/us/app/persimmon-reader/id6800041021",
   apk: process.env.NEXT_PUBLIC_APK_URL,
   playStore: process.env.NEXT_PUBLIC_PLAY_STORE_URL,
 } as const;
