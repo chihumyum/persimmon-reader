@@ -40,7 +40,9 @@ test("renders the complete Persimmon landing page", async () => {
     html,
     /href="https:\/\/apps\.apple\.com\/us\/app\/persimmon-reader\/id6800041021"/,
   );
-  assert.match(html, /Google Play/);
+  assert.match(html, /github-badge-prefix[^>]*>View on</);
+  assert.match(html, /github-badge-label[^>]*>GitHub</);
+  assert.doesNotMatch(html, /Google Play/);
   assert.match(html, /Android APK/);
   assert.match(html, /href="\/support"/);
   assert.match(html, /href="\/privacy"/);
@@ -52,6 +54,10 @@ test("renders the complete Persimmon landing page", async () => {
   assert.match(
     html,
     /aria-label="View the Persimmon app source on GitHub"/,
+  );
+  assert.equal(
+    html.match(/aria-label="View the Persimmon app source on GitHub"/g)?.length,
+    1,
   );
   assert.match(html, /page-turn-desktop\.mp4/);
   assert.match(html, /page-turn-desktop-hd\.mp4/);
@@ -137,11 +143,11 @@ test("keeps motion, download, and repository fallbacks explicit", async () => {
   );
   assert.doesNotMatch(page, /process\.env\.NEXT_PUBLIC_APP_STORE_URL/);
   assert.match(page, /process\.env\.NEXT_PUBLIC_APK_URL/);
-  assert.match(page, /process\.env\.NEXT_PUBLIC_PLAY_STORE_URL/);
+  assert.doesNotMatch(page, /NEXT_PUBLIC_PLAY_STORE_URL/);
   assert.match(page, /https:\/\/github\.com\/chihumyum\/Persimmon/);
   assert.match(page, /icons\/github-mark\.svg/);
   assert.match(page, /badges\/download-on-the-app-store\.svg/);
-  assert.match(page, /badges\/get-it-on-google-play-trimmed\.png/);
+  assert.doesNotMatch(page, /Google Play|get-it-on-google-play/);
   assert.match(page, /Android APK/);
   assert.doesNotMatch(page, /SpotlightBadgeLink/);
   assert.match(responsiveVideo, /window\.matchMedia\(MOBILE_MEDIA\)/);
@@ -190,7 +196,7 @@ test("keeps motion, download, and repository fallbacks explicit", async () => {
   );
   assert.match(
     css,
-    /\.store-badge-google-play img\s*\{[\s\S]*?height:\s*var\(--store-badge-visible-height\)/,
+    /\.github-badge-artwork\s*\{[\s\S]*?height:\s*var\(--store-badge-visible-height\)/,
   );
   assert.match(
     css,
@@ -217,18 +223,12 @@ test("keeps motion, download, and repository fallbacks explicit", async () => {
     css,
     /a\.store-badge:hover\s*\{[^}]*transform:\s*translateY/,
   );
-  assert.match(
-    css,
-    /\.store-badge-google-play\.is-disabled\s*\{[^}]*opacity:\s*0\.38/,
-  );
-  assert.match(
-    css,
-    /\.store-badge-google-play\.is-disabled\s*\{[^}]*filter:\s*grayscale\(0\.8\) saturate\(0\.25\)/,
-  );
+  assert.doesNotMatch(css, /store-badge-google-play|landing-github-link/);
   assert.match(css, /\.scrim\s*\{[\s\S]*?linear-gradient\(/);
   assert.doesNotMatch(css, /\.hero::before|center-halo-drift/);
   assert.match(layout, /themeColor:\s*"#17120e"/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton|drizzle/);
   assert.doesNotMatch(envExample, /NEXT_PUBLIC_GITHUB/);
+  assert.doesNotMatch(envExample, /NEXT_PUBLIC_PLAY_STORE_URL/);
   assert.match(githubMark, /<svg[^>]*viewBox="0 0 16 16"/);
 });

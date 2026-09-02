@@ -387,9 +387,6 @@ a {
 .store-badge-app-store img {
   height: var(--store-badge-visible-height);
 }
-.store-badge-google-play img {
-  height: var(--store-badge-visible-height);
-}
 .apk-badge-artwork {
   position: relative;
   /* Balance the visible gaps created by the narrower App Store artwork. */
@@ -408,26 +405,50 @@ a {
   transform: scale(var(--download-artwork-scale));
   transform-origin: center;
 }
-.apk-badge-prefix {
+.apk-badge-prefix,
+.github-badge-prefix {
   font-size: clamp(5px, 0.85cqi, 6px);
   font-weight: 500;
   letter-spacing: 0.02em;
 }
-.apk-badge-label {
+.apk-badge-label,
+.github-badge-label {
   margin-top: 1px;
   font-size: clamp(9px, 1.6cqi, 11px);
   font-weight: 600;
   letter-spacing: -0.02em;
+}
+.github-badge-artwork {
+  display: flex;
+  width: clamp(70px, 14cqi, 95px);
+  height: var(--store-badge-visible-height);
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, 0.8cqi, 6px);
+  border: 1px solid rgba(255, 255, 255, 0.52);
+  border-radius: clamp(4px, 0.7cqi, 5px);
+  background: #050505;
+  color: rgba(255, 255, 255, 0.9);
+  transform: scale(var(--download-artwork-scale));
+  transform-origin: center;
+}
+.github-badge-artwork img {
+  width: clamp(13px, 2.4cqi, 16px);
+  height: clamp(13px, 2.4cqi, 16px);
+  filter: invert(1);
+  transform: none;
+}
+.github-badge-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
 }
 .store-badge.is-disabled {
   cursor: default;
 }
 a.store-badge {
   cursor: pointer;
-}
-.store-badge-google-play.is-disabled {
-  opacity: 0.38;
-  filter: grayscale(0.8) saturate(0.25);
 }
 .store-badge:focus-visible {
   outline: 3px solid var(--accent);
@@ -454,23 +475,6 @@ a.store-badge {
   border-radius: 2px;
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-}
-.landing-github-link {
-  display: flex;
-  width: 14px;
-  height: 14px;
-  align-items: center;
-  justify-content: center;
-}
-.landing-github-link img {
-  width: 13px;
-  height: 13px;
-  filter: invert(1);
-  opacity: 0.5;
-  transition: opacity 160ms ease;
-}
-.landing-github-link:hover img {
-  opacity: 0.9;
 }
 .legal-page {
   min-height: 100vh;
@@ -639,9 +643,6 @@ a.store-badge {
     transition: none;
   }
   .landing-legal-links a {
-    transition: none;
-  }
-  .landing-github-link img {
     transition: none;
   }
   .legal-document .support-contact-link {

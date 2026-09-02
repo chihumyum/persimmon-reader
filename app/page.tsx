@@ -3,7 +3,6 @@ import { ResponsiveBackgroundVideo } from "./ResponsiveBackgroundVideo";
 const downloadLinks = {
   appStore: "https://apps.apple.com/us/app/persimmon-reader/id6800041021",
   apk: process.env.NEXT_PUBLIC_APK_URL,
-  playStore: process.env.NEXT_PUBLIC_PLAY_STORE_URL,
 } as const;
 
 const appRepositoryUrl = "https://github.com/chihumyum/Persimmon";
@@ -17,7 +16,7 @@ type StoreBadgeProps = {
     width: number;
   };
   label: string;
-  store: "app-store" | "google-play";
+  store: "app-store";
 };
 
 function StoreBadge({ href, image, label, store }: StoreBadgeProps) {
@@ -89,6 +88,28 @@ function ApkBadge({ href }: { href?: string }) {
   );
 }
 
+function GitHubBadge() {
+  return (
+    <a
+      className="store-badge github-badge"
+      href={appRepositoryUrl}
+      rel="noreferrer"
+      target="_blank"
+      aria-label="View the Persimmon app source on GitHub"
+    >
+      <span className="github-badge-artwork" aria-hidden="true">
+        {/* Use GitHub's official Mark from Primer Octicons. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/icons/github-mark.svg" width="16" height="16" alt="" />
+        <span className="github-badge-copy">
+          <span className="github-badge-prefix">View on</span>
+          <span className="github-badge-label">GitHub</span>
+        </span>
+      </span>
+    </a>
+  );
+}
+
 export default function Home() {
   return (
     <main className="landing">
@@ -119,17 +140,7 @@ export default function Home() {
             store="app-store"
           />
           <ApkBadge href={downloadLinks.apk} />
-          <StoreBadge
-            href={downloadLinks.playStore}
-            image={{
-              alt: "Get it on Google Play",
-              height: 168,
-              src: "/badges/get-it-on-google-play-trimmed.png",
-              width: 564,
-            }}
-            label="Google Play"
-            store="google-play"
-          />
+          <GitHubBadge />
         </nav>
       </section>
 
@@ -137,17 +148,6 @@ export default function Home() {
         <a href="/support">Support</a>
         <a href="/privacy">Privacy</a>
         <a href="/terms">Terms</a>
-        <a
-          className="landing-github-link"
-          href={appRepositoryUrl}
-          rel="noreferrer"
-          target="_blank"
-          aria-label="View the Persimmon app source on GitHub"
-        >
-          {/* Use GitHub's official Mark from Primer Octicons. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/icons/github-mark.svg" width="16" height="16" alt="" />
-        </a>
       </footer>
     </main>
   );
